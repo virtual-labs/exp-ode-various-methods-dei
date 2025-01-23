@@ -1,0 +1,27 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What is an Ordinary Differential Equation (ODE)?",
+      "answers": {
+        "a": "An equation involving derivatives",
+        "b": "A linear algebraic equation",
+        "c": "A complex mathematical function",
+        "d": "A statistical regression model"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which parameter is crucial in numerical ODE solving?",
+      "answers": {
+        "a": "Number of integration steps",
+        "b": "Initial condition",
+        "c": "Equation complexity",
+        "d": "Both A and B"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    }
+  ]
+}

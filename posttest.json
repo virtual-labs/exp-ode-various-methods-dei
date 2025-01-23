@@ -1,0 +1,27 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Which method typically provides more accurate results?",
+      "answers": {
+        "a": "Euler's Method",
+        "b": "4th Order Runge-Kutta",
+        "c": "Both equally accurate",
+        "d": "Depends on equation type"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In ODE solving, what does the step size primarily affect?",
+      "answers": {
+        "a": "Computational speed",
+        "b": "Solution accuracy",
+        "c": "Initial condition",
+        "d": "Equation complexity"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+  ]
+}
