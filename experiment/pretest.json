@@ -9,8 +9,7 @@
         "c": "A complex mathematical function",
         "d": "A statistical regression model"
       },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
+      "correctAnswer": "a"
     },
     {
       "question": "Which parameter is crucial in numerical ODE solving?",
@@ -20,8 +19,87 @@
         "c": "Equation complexity",
         "d": "Both A and B"
       },
-      "correctAnswer": "d",
-      "difficulty": "beginner"
+      "correctAnswer": "d"
+    },
+    {
+      "question": "What does dy/dt represent in an ODE?",
+      "answers": {
+        "a": "Derivative of y with respect to t",
+        "b": "Area under curve",
+        "c": "Volume of the function",
+        "d": "Graphical slope only at t = 0"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Which method uses only the slope at the beginning of each interval?",
+      "answers": {
+        "a": "Euler’s Method",
+        "b": "4th Order Runge-Kutta",
+        "c": "Simpson’s Rule",
+        "d": "Newton’s Method"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "4th Order Runge-Kutta improves accuracy by:",
+      "answers": {
+        "a": "Using a single slope estimation",
+        "b": "Using multiple slope estimations within the step",
+        "c": "Ignoring function values",
+        "d": "Taking a random step size"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is required to start solving a first-order ODE?",
+      "answers": {
+        "a": "Only the final value",
+        "b": "An initial condition",
+        "c": "The highest degree term only",
+        "d": "No input parameters"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "A smaller step size in numerical ODE solving generally results in:",
+      "answers": {
+        "a": "Less accuracy",
+        "b": "More accuracy",
+        "c": "No change",
+        "d": "Undefined results"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Numerical solutions are useful when:",
+      "answers": {
+        "a": "Exact analytical solutions are difficult",
+        "b": "Equation is very simple",
+        "c": "No differential terms exist",
+        "d": "Only statistical data is given"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What type of ODE is handled in this simulation?",
+      "answers": {
+        "a": "First-order ODE",
+        "b": "Third-order ODE",
+        "c": "Partial differential equation",
+        "d": "Algebraic equations only"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "In Euler’s method, the next value is calculated using:",
+      "answers": {
+        "a": "Only previous slope information",
+        "b": "Integration of the function",
+        "c": "Random guess",
+        "d": "Graph flattening technique"
+      },
+      "correctAnswer": "a"
     }
   ]
 }
