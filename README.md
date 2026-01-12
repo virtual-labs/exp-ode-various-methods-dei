@@ -17,7 +17,8 @@ This experiment focuses on the numerical solution of ordinary differential equat
 
 ### Contributors List  
 
-SrNo | Name | Faculty or Student | Department | Institute | Email id  
+SrNo | Name | Position | Department | Institute | Email id  
 :--|:--|:--|:--|:--|:--|  
-1 | Aditya Vardhan | Student | Physics and Computer Sci. | Dayalbagh Educational Institute | aditya202202@dei.ac.in
-2 | Mohit Yadav | Student | Physics and Computer Sci. | Dayalbagh Educational Institute | mohit173333@dei.ac.in   
+1 | Aditya Vardhan | Research Scholar | Physics and Computer Sci. | Dayalbagh Educational Institute | aditya202202@dei.ac.in 
+2 | Mohit Yadav | Research Scholar | Physics and Computer Sci. | Dayalbagh Educational Institute | mohit173333@dei.ac.in
+
