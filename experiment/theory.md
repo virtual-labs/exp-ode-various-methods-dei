@@ -37,7 +37,7 @@ Euler’s Method is easy to implement but may produce significant errors if the 
 The Fourth-Order Runge–Kutta method (RK4) is a more accurate and widely used numerical technique for solving ODEs. Instead of using a single slope, RK4 evaluates slopes at multiple points within each step and combines them to obtain a better approximation.
 
 The RK4 update formula is:
-<img width="399" height="258" alt="image" src="https://github.com/user-attachments/assets/1760a486-ea30-4c64-bd9a-97d47c976ec0" />
+<img width="401" height="268" alt="image" src="https://github.com/user-attachments/assets/1b53a4a3-572e-4cc2-86a7-32195ebbeac2" />
 
 This method provides significantly better accuracy compared to Euler’s Method while maintaining reasonable computational efficiency.
 
