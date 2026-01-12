@@ -1,0 +1,105 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Which method typically provides more accurate results?",
+      "answers": {
+        "a": "Euler's Method",
+        "b": "4th Order Runge-Kutta",
+        "c": "Both equally accurate",
+        "d": "Depends on equation type"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "In ODE solving, what does the step size primarily affect?",
+      "answers": {
+        "a": "Computational speed",
+        "b": "Solution accuracy",
+        "c": "Initial condition",
+        "d": "Equation complexity"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "What is required to begin solving a first-order ODE numerically?",
+      "answers": {
+        "a": "Only the final value of y",
+        "b": "An initial condition",
+        "c": "Only the step size",
+        "d": "A quadratic function"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Euler’s method uses which type of approximation?",
+      "answers": {
+        "a": "Linear approximation",
+        "b": "Parabolic approximation",
+        "c": "Circular approximation",
+        "d": "No approximation"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Runge-Kutta methods improve accuracy by:",
+      "answers": {
+        "a": "Ignoring intermediate points",
+        "b": "Taking multiple slope estimates within each step",
+        "c": "Using larger steps always",
+        "d": "Removing initial values"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Which type of differential equation is solved in this experiment?",
+      "answers": {
+        "a": "First-order ODE",
+        "b": "Second-order ODE",
+        "c": "Partial differential equation",
+        "d": "Algebraic equation"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "What does dy/dt represent in an ODE?",
+      "answers": {
+        "a": "Function value",
+        "b": "Slope or rate of change",
+        "c": "Area under curve",
+        "d": "Derivative of x"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Reducing the step size generally results in:",
+      "answers": {
+        "a": "Lower accuracy",
+        "b": "Higher accuracy",
+        "c": "No change",
+        "d": "System crash"
+      },
+      "correctAnswer": "b"
+    },
+    {
+      "question": "Euler’s method may accumulate error because:",
+      "answers": {
+        "a": "It does not consider intermediate slopes",
+        "b": "It uses too many parabolas",
+        "c": "It solves only linear equations",
+        "d": "It requires no initial condition"
+      },
+      "correctAnswer": "a"
+    },
+    {
+      "question": "Numerical ODE solving is useful when:",
+      "answers": {
+        "a": "Analytical solutions are difficult or impossible",
+        "b": "Exact formula is already known",
+        "c": "No initial condition is given",
+        "d": "Equation has no variables"
+      },
+      "correctAnswer": "a"
+    }
+  ]
+}
