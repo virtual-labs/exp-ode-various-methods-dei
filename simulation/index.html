@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ODE Solver</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: black;
+            padding: 15px;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 20px;
+        }
+        .title {
+            text-align: center;
+            color: white;
+            margin: 10px 0 20px 0;
+            font-size: 1.5em;
+            background-color: #2c3e50;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            justify-content: center;
+            align-items: start;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 450px;
+            height: 600px;      /* Reduced from 650px to 500px */
+            margin: 0 auto;
+        }
+        .input-content {
+            height: 95%;
+            display: flex;
+            color: black;
+            flex-direction: column;
+        }
+        .input-group {
+            margin-bottom: 15px;  /* Reduced from 20px */
+        }
+        label {
+            display: block;
+            margin-bottom: 2px;
+            color: #4a5568;
+            font-size: 0.85em;
+        }
+        input, select {
+            width: calc(100% - 12px);
+            padding: 5px;       /* Reduced from 6px */
+            margin-bottom: 2px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+        }
+        .examples {
+            background: #f8fafc;
+            color: black;
+            padding: 6px;       /* Reduced from 8px */
+            border-radius: 4px;
+            margin-bottom: 8px;  /* Reduced from 10px */
+            font-size: 0.85em;
+        }
+        .example-item {
+            margin: 3px 0;      /* Reduced from 4px */
+            color: #4a5568;
+        }
+        .scrollable-content {
+            flex-grow: 2;
+            overflow-y: auto;
+            margin-bottom: 8px;  /* Reduced from 10px */
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 8px 12px;   /* Reduced from 10px 15px */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: auto;
+            font-size: 0.95em;   /* Reduced from 1em */
+        }
+        button:hover {
+            background-color: #2c3e50;
+        }
+        .output-content {
+            height: 95%;
+            display: flex;
+            flex-direction: column;
+        }
+        .output-container {
+            height: 150px;      /* Reduced from 200px */
+            overflow-y: auto;
+        }
+        .graph-container {
+            flex-grow: 1;
+            margin-top: 12px;   /* Reduced from 15px */
+        }
+        h2 {
+            margin: 0 0 10px 0; /* Reduced from 12px */
+            font-size: 1.2em;   /* Reduced from 1.3em */
+            color: white;
+            background-color: #2c3e50;
+            padding: 8px;       /* Reduced from 10px */
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Rest of the HTML and JavaScript code remains exactly the same -->
+    <div class="container">
+        <h1 class="title">Ordinary Differential Equation Solver</h1>
+        
+        <div class="grid-container">
+            <div class="box">
+                <div class="input-content">
+                    <h2><center>Input Parameters</h2>
+                    <div class="scrollable-content">
+                        <div class="examples">
+                            <strong>Example Equations:</strong>
+                            <div class="example-item">dy/dt = -2*t*y (Decaying Oscillator)</div>
+                            <div class="example-item">dy/dt = y (Exponential Growth)</div>
+                            <div class="example-item">dy/dt = -y (Exponential Decay)</div>
+                            <div class="example-item">dy/dt = t*y (Variable Growth)</div>
+                            <div class="example-item">dy/dt = Math.sin(t) (Sinusoidal)</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="equation">Differential Equation (use 'y' for function and 't' for variable):</label>
+                            <input type="text" id="equation" placeholder="Example: -2*t*y" value="-2*t*y">
+                        </div>
+                        <div class="input-group">
+                            <label for="method">Solution Method:</label>
+                            <select id="method">
+                                <option value="euler">Euler's Method</option>
+                                <option value="rk4">4th Order Runge-Kutta</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="y0">Initial Value (y0):</label>
+                            <input type="number" id="y0" value="1">
+                        </div>
+                        <div class="input-group">
+                            <label for="t0">Initial Time (t0):</label>
+                            <input type="number" id="t0" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="tn">Final Time (tn):</label>
+                            <input type="number" id="tn" value="1">
+                        </div>
+                        <div class="input-group">
+                            <label for="steps">Number of Steps:</label>
+                            <input type="number" id="steps" value="10">
+                        </div>
+                    </div>
+                    <button onclick="solve()">Simulate</button>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="output-content">
+                    <h2><center>Solution</h2>
+                    <div class="output-container">
+                        <pre id="result"></pre>
+                    </div>
+                    <div class="graph-container">
+                        <canvas id="solutionGraph"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code remains exactly the same as before
+        let chart = null;
+
+        function evaluateFunction(expr, t, y) {
+            const expression = expr.replace(/y/g, `(${y})`).replace(/t/g, `(${t})`);
+            return Function('return ' + expression)();
+        }
+
+        function eulerMethod(f, y0, t0, tn, steps) {
+            const h = (tn - t0) / steps;
+            let t = t0;
+            let y = y0;
+            const results = [];
+            
+            for (let i = 0; i <= steps; i++) {
+                results.push({ t: t.toFixed(6), y: y.toFixed(6) });
+                const k = f(t, y);
+                y += h * k;
+                t += h;
+            }
+            
+            return results;
+        }
+
+        function rungeKutta4(f, y0, t0, tn, steps) {
+            const h = (tn - t0) / steps;
+            let t = t0;
+            let y = y0;
+            const results = [];
+            
+            for (let i = 0; i <= steps; i++) {
+                results.push({ t: t.toFixed(6), y: y.toFixed(6) });
+                
+                const k1 = f(t, y);
+                const k2 = f(t + h/2, y + (h/2)*k1);
+                const k3 = f(t + h/2, y + (h/2)*k2);
+                const k4 = f(t + h, y + h*k3);
+                
+                y += (h/6) * (k1 + 2*k2 + 2*k3 + k4);
+                t += h;
+            }
+            
+            return results;
+        }
+
+        function updateGraph(results) {
+            const ctx = document.getElementById('solutionGraph').getContext('2d');
+            
+            if (chart) {
+                chart.destroy();
+            }
+            
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: results.map(r => r.t),
+                    datasets: [{
+                        label: 'Solution y(t)',
+                        data: results.map(r => r.y),
+                        borderColor: '#4299e1',
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 't'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'y(t)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function solve() {
+            const equation = document.getElementById('equation').value;
+            const method = document.getElementById('method').value;
+            const y0 = parseFloat(document.getElementById('y0').value);
+            const t0 = parseFloat(document.getElementById('t0').value);
+            const tn = parseFloat(document.getElementById('tn').value);
+            const steps = parseInt(document.getElementById('steps').value);
+
+            try {
+                const f = (t, y) => evaluateFunction(equation, t, y);
+                
+                let results;
+                if (method === 'euler') {
+                    results = eulerMethod(f, y0, t0, tn, steps);
+                } else {
+                    results = rungeKutta4(f, y0, t0, tn, steps);
+                }
+
+                let output = `Method: ${method === 'euler' ? "Euler's" : "4th Order Runge-Kutta"}\n`;
+                output += 'Step\t\tt\t\ty\n';
+                output += '----------------------------------------\n';
+                results.forEach((result, i) => {
+                    output += `${i}\t\t${result.t}\t\t${result.y}\n`;
+                });
+
+                document.getElementById('result').textContent = output;
+                updateGraph(results);
+            } catch (error) {
+                document.getElementById('result').textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+<script src="../assets/js/iframeResize.js"></script>
+        
+        </body>
+</html>
