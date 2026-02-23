@@ -5,6 +5,7 @@ An Ordinary Differential Equation (ODE) is an equation that involves an unknown 
 Numerical methods provide an effective way to approximate the solutions of first-order ODEs by computing the value of the dependent variable step-by-step over a defined interval.
 
 A general first-order ODE can be written as:
+(X𝑛, Y𝑛) is the current point; these points are different from the function.
 
 <img width="149" height="71" alt="image" src="https://github.com/user-attachments/assets/1c752219-8bee-4366-9325-c8b3992a912a" />
 
@@ -37,7 +38,17 @@ Euler’s Method is easy to implement but may produce significant errors if the 
 The Fourth-Order Runge–Kutta method (RK4) is a more accurate and widely used numerical technique for solving ODEs. Instead of using a single slope, RK4 evaluates slopes at multiple points within each step and combines them to obtain a better approximation.
 
 The RK4 update formula is:
-<img width="401" height="268" alt="image" src="https://github.com/user-attachments/assets/1b53a4a3-572e-4cc2-86a7-32195ebbeac2" />
+K₁ = f(xₙ, yₙ) → Initial slope (at beginning of interval)
+
+K₂ = f(xₙ + h/2, yₙ + hK₁/2) → Slope at midpoint using K₁
+
+K₃ = f(xₙ + h/2, yₙ + hK₂/2) → Refined midpoint slope using K₂
+
+K₄ = f(xₙ + h, yₙ + hK₃) → Slope at end of interval
+
+Next value:
+yₙ₊₁ = yₙ + (h/6)(K₁ + 2K₂ + 2K₃ + K₄)
+
 
 This method provides significantly better accuracy compared to Euler’s Method while maintaining reasonable computational efficiency.
 
